@@ -15,5 +15,12 @@ namespace TicTacToe
             }
             return board;
         }
+        public char ChooseALetter()
+        {
+            Console.WriteLine("Choose a letter between 'X' and 'O' : ");
+            string letterOfTheUser = Console.ReadLine();
+            char letter = letterOfTheUser[0];
+            return letter;
+        }
     }
 }
