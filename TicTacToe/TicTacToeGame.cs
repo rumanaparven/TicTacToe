@@ -46,5 +46,26 @@ namespace TicTacToe
             Console.WriteLine("---------");
             Console.WriteLine(board[7] + " | " + board[8] + " | " + board[9]);
         }
+        public void UC4_MakeAMoveForPlayer(char[] board, char letter)
+        {
+            Console.WriteLine("Enter the position of your move : ");
+
+            int position = Convert.ToInt32(Console.ReadLine());
+            while (position < 1 || position > 9)
+            {
+                Console.WriteLine("You have entered an Invalid position");
+                Console.WriteLine("Position should be between 1-9.");
+                Console.WriteLine("Enter the position of your move : ");
+                position = Convert.ToInt32(Console.ReadLine());
+            }
+
+            while (!(board[position] == ' '))
+            {
+                Console.WriteLine("This position is already full.");
+                Console.WriteLine("Enter another position between 1-9 : ");
+                position = Convert.ToInt32(Console.ReadLine());
+            }
+            board[position] = letter;
+        }
     }
 }

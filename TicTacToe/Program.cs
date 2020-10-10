@@ -12,7 +12,8 @@ namespace TicTacToe
             char letterOfUser = tictactoe.ChooseALetter();
             Console.WriteLine("Player choses " + letterOfUser);
             tictactoe.UC3_ShowBoard(board);
-
+            tictactoe.UC4_MakeAMoveForPlayer(board, letterOfUser);
+            tictactoe.UC3_ShowBoard(board);
         }
     }
 }
