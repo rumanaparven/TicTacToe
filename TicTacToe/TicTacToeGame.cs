@@ -61,7 +61,7 @@ namespace TicTacToe
 
             while (!(board[position] == ' '))
             {
-                Console.WriteLine("This position is already full.");
+                Console.WriteLine("Position already full.");
                 Console.WriteLine("Enter another position between 1-9 : ");
                 position = Convert.ToInt32(Console.ReadLine());
             }
