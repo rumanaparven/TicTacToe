@@ -19,7 +19,7 @@ namespace TicTacToe
 
             tictactoe.UC7_MakeAMoveForPlayer(board, letterOfUser);
             tictactoe.UC3_ShowBoard(board);
-            tictactoe.UC8_MakeAMoveForComputer(board, letterOfComputer);
+            tictactoe.UC8_MakeAMoveForComputer(board,letterOfUser, letterOfComputer);
             tictactoe.UC3_ShowBoard(board);
 
         }

@@ -117,11 +117,22 @@ namespace TicTacToe
             }
             return 0;
         }
-        public void UC8_MakeAMoveForComputer(char[] board, char letterOfUser)
+        public void UC8_MakeAMoveForComputer(char[] board, char letterOfUser, char letterOfComputer)
         {
+            int userWinningMove = 0;
             int winningMove = GetWinningMove(board, letterOfUser);
-            board[winningMove] = letterOfUser;
-            
+            if (winningMove != 0)
+                board[winningMove] = letterOfComputer;
+            else if (true)
+            {
+                userWinningMove = GetWinningMove(board, letterOfUser);
+                if (userWinningMove != 0)
+                    board[userWinningMove] = letterOfComputer;
+            }
+            if(winningMove==0 && userWinningMove==0)
+                board[0] = letterOfComputer;
+
+
         }
         public void MakeAMove(int position, char letter,char[] b)
         {
