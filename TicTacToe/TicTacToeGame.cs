@@ -129,10 +129,23 @@ namespace TicTacToe
                 if (userWinningMove != 0)
                     board[userWinningMove] = letterOfComputer;
             }
-            if(winningMove==0 && userWinningMove==0)
-                board[0] = letterOfComputer;
+            if(winningMove == 0 && userWinningMove == 0)
+            {
+                int[] cornerMove = { 1, 3, 7, 9 };
+                int move = GetRandomCornerMove(board, cornerMove);
+                board[move] = letterOfComputer;
+            }
+            
 
-
+        }
+        public int GetRandomCornerMove(char[] board, int[] cornerMove)
+        {
+            for(int i = 0; i < 4; i++)
+            {
+                if (board[cornerMove[i]] == ' ')
+                    return cornerMove[i];
+            }
+            return 0;
         }
         public void MakeAMove(int position, char letter,char[] b)
         {
