@@ -65,7 +65,18 @@ namespace TicTacToe
                 Console.WriteLine("Enter another position between 1-9 : ");
                 position = Convert.ToInt32(Console.ReadLine());
             }
-            board[position] = letter;
+            
+        }
+        public string UC6_WhoPlaysFirst()
+        {
+            Random random = new Random();
+            int toss=random.Next(0, 2);
+            if (toss == 0)
+            {
+                return "user";
+            }
+            else
+                return "computer";
         }
     }
 }
