@@ -39,7 +39,7 @@ namespace TicTacToe
         }
         public void UC3_ShowBoard(char[] board)
         {
-            Console.WriteLine("Tic Tac Toe Board :");
+            
             Console.WriteLine(board[1] + " | " + board[2] + " | " + board[3]);
             Console.WriteLine("---------");
             Console.WriteLine(board[4] + " | " + board[5] + " | " + board[6]);
