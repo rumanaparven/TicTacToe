@@ -119,11 +119,11 @@ namespace TicTacToe
         }
         public void UC8_MakeAMoveForComputer(char[] board, char letterOfUser, char letterOfComputer)
         {
-            int userWinningMove = 0;
+            int userWinningMove = 0,move=0;
             int winningMove = GetWinningMove(board, letterOfUser);
             if (winningMove != 0)
                 board[winningMove] = letterOfComputer;
-            else if (true)
+            if (winningMove==0)
             {
                 userWinningMove = GetWinningMove(board, letterOfUser);
                 if (userWinningMove != 0)
@@ -132,11 +132,26 @@ namespace TicTacToe
             if(winningMove == 0 && userWinningMove == 0)
             {
                 int[] cornerMove = { 1, 3, 7, 9 };
-                int move = GetRandomCornerMove(board, cornerMove);
-                board[move] = letterOfComputer;
+                 move = GetRandomCornerMove(board, cornerMove);
+                if(move!=0)
+                    board[move] = letterOfComputer;
+            }
+            if(winningMove == 0 && userWinningMove == 0 && move == 0)
+            {
+                int[] othermoves = { 5, 2, 4, 6, 8 };
+                board[GetSubsequentPosition(board,othermoves)] = letterOfComputer;
             }
             
 
+        }
+        public int GetSubsequentPosition(char[] board, int[] othermoves)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                if (board[othermoves[i]] == ' ')
+                    return othermoves[i];
+            }
+            return 0;
         }
         public int GetRandomCornerMove(char[] board, int[] cornerMove)
         {
