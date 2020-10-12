@@ -179,5 +179,18 @@ namespace TicTacToe
             return (row1 || row2 || row3 || col1 || col2 || col3 || diag1 || diag2);
 
         }
+        public bool CheckIfBoardIsFull(char[] board)
+        {
+            bool isFull = true;
+            for (int i = 1; i < 10; i++)
+            {
+                if (board[i] == ' ')
+                {
+                    isFull = false;
+                    break;
+                }
+            }
+            return isFull;
+        }
     }
 }
