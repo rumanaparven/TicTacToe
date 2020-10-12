@@ -11,12 +11,15 @@ namespace TicTacToe
             TicTacToeGame tictactoe = new TicTacToeGame();
             char[] board = tictactoe.CreateABoard();
             char letterOfUser = tictactoe.ChooseALetter();
+            char letterOfComputer = tictactoe.GetLetterOfComouter(letterOfUser);
             Console.WriteLine("Player choses " + letterOfUser);
             tictactoe.UC3_ShowBoard(board);
             string toss = tictactoe.UC6_WhoPlaysFirst();
             Console.WriteLine(toss + " plays first.");
 
-            tictactoe.UC4_MakeAMoveForPlayer(board, letterOfUser);
+            tictactoe.UC7_MakeAMoveForPlayer(board, letterOfUser);
+            tictactoe.UC3_ShowBoard(board);
+            tictactoe.UC8_MakeAMoveForComputer(board, letterOfComputer);
             tictactoe.UC3_ShowBoard(board);
 
         }

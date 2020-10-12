@@ -46,7 +46,7 @@ namespace TicTacToe
             Console.WriteLine("---------");
             Console.WriteLine(board[7] + " | " + board[8] + " | " + board[9]);
         }
-        public void UC4_MakeAMoveForPlayer(char[] board, char letter)
+        public void UC7_MakeAMoveForPlayer(char[] board, char letter)
         {
             Console.WriteLine("Enter the position of your move : ");
 
@@ -77,6 +77,68 @@ namespace TicTacToe
             }
             else
                 return "computer";
+        }
+        public char GetLetterOfComouter(char letterOfUser)
+        {
+            if (letterOfUser.Equals('X'))
+                return 'O';
+            else
+                return 'X';
+        }
+        public char[] GetCopyOfBoard(char[] board)
+        {
+            char[] copyOfBoard = new char[10];
+            for(int i = 0; i < 10; i++)
+            {
+                copyOfBoard[i] = board[i];
+            }
+            return copyOfBoard;
+        }
+        public bool IsSpaceFree(char[] copyOfBoard, int index)
+        {
+            if ((copyOfBoard[index] == ' '))
+                return true;
+            else
+                return false;
+        }
+        public int GetWinningMove(char[] board, char letterOfUser)
+        {
+            for(int index = 1; index < board.Length; index++)
+            {
+                char[] copyOfBoard = GetCopyOfBoard(board);
+                if (IsSpaceFree(copyOfBoard, index))
+                {
+                    MakeAMove(index, letterOfUser,copyOfBoard);
+                    if (CheckIfWon(copyOfBoard, letterOfUser))
+                    {
+                        return index;
+                    }
+                }
+            }
+            return 0;
+        }
+        public void UC8_MakeAMoveForComputer(char[] board, char letterOfUser)
+        {
+            int winningMove = GetWinningMove(board, letterOfUser);
+            board[winningMove] = letterOfUser;
+            
+        }
+        public void MakeAMove(int position, char letter,char[] b)
+        {
+            b[position] = letter;
+        }
+        public bool CheckIfWon(char[] board, char letter)
+        {
+            bool row1 = (board[1] == letter && board[2] == letter && board[3] == letter);
+            bool row2 = (board[4] == letter && board[5] == letter && board[6] == letter);
+            bool row3 = (board[7] == letter && board[8] == letter && board[9] == letter);
+            bool col1 = (board[1] == letter && board[4] == letter && board[7] == letter);
+            bool col2 = (board[2] == letter && board[5] == letter && board[8] == letter);
+            bool col3 = (board[3] == letter && board[6] == letter && board[9] == letter);
+            bool diag1 = (board[1] == letter && board[5] == letter && board[9] == letter);
+            bool diag2 = (board[3] == letter && board[5] == letter && board[7] == letter);
+            return (row1 || row2 || row3 || col1 || col2 || col3 || diag1 || diag2);
+
         }
     }
 }
